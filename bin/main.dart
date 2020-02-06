@@ -5,16 +5,14 @@ import 'package:ete_progress/progress_bar.dart';
 
 import 'package:dotenv/dotenv.dart' show load, env;
 
-List<String> getFilePaths(int year) {
-  return [
-    '$year.yaml',
-    'data/$year.yaml',
-  ];
-}
+List<String> getFilePaths(int year) => [
+      '$year.yaml',
+      'data/$year.yaml',
+    ];
 
 void main() async {
   load();
-  int year = int.tryParse(env['YEAR']) ?? DateTime.now().year;
+  int year = env.containsKey('YEAR') ? int.tryParse(env['YEAR']) : DateTime.now().year;
   print('Using $year as current year.');
 
   final file = await findFile(getFilePaths(year)..add(env['DATA_PATH']));
