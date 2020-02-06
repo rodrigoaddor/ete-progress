@@ -1,0 +1,13 @@
+name: ete_progress
+description: A sample command-line application.
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  dotenv: ^2.0.0
+  equatable: ^1.0.3
+  http: ^0.12.0+4
+  path: ^1.6.4
+  twitter_api: ^0.1.2
+  yaml: ^2.2.0
