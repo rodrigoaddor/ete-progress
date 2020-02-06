@@ -2,6 +2,7 @@ import 'package:ete_progress/calendar.dart';
 import 'package:ete_progress/day.dart';
 import 'package:ete_progress/find_file.dart';
 import 'package:ete_progress/progress_bar.dart';
+import 'package:ete_progress/twitter.dart';
 
 import 'package:dotenv/dotenv.dart' show load, env;
 
@@ -26,6 +27,10 @@ void main() async {
   final today = calendar.getSchoolDays(Day.fromDateTime(DateTime.now()));
   final percent = today / totalDays;
 
-  print('${(percent * 100).floor()}%    ${generateProgressBar(percent)}\n'
+  final msg = ('${(percent * 100).floor()}%    ${generateProgressBar(percent)}\n'
       'Faltam ${calendar.end.asDateTime.difference(Day.now().asDateTime).inDays} dias');
+
+  if (await getLastPercent() < percent) {
+    postTweet(msg);
+  }
 }
