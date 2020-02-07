@@ -5,9 +5,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  args: ^1.5.2
   dotenv: ^2.0.0
   equatable: ^1.0.3
   http: ^0.12.0+4
   path: ^1.6.4
-  twitter_api: ^0.1.2
   yaml: ^2.2.0
+
+  twitter_api:
+    git:
+      url: https://github.com/stefanuros/dartTwitterAPI
+      ref: 3fafad1d9a772107e03827dfd42f0793b55f41a9
